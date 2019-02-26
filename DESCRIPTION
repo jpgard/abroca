@@ -1,12 +1,15 @@
 Package: abroca
-Title: What the Package Does (One Line, Title Case)
+Title: Compute and Evaluate Absolute Between-ROC Area
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Josh",
+           family = "Gardner",
            role = c("aut", "cre"),
-           email = "first.last@example.com")
-Description: What the package does (one paragraph).
-License: What license it uses
+           email = "jpgard@cs.washington.edu")
+Description: This package contains functions for computing, visualizing,
+    and statistically evaluating the Absolute Between-ROC Area (ABROCA).
+    The ABROCA is used as a tool to measure predictive fairness using the predicted
+    probabilities of observations from two or more predictive models.
+License: MIT
 Encoding: UTF-8
 LazyData: true
