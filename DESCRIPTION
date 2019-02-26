@@ -8,8 +8,12 @@ Authors@R:
            email = "jpgard@cs.washington.edu")
 Description: This package contains functions for computing, visualizing,
     and statistically evaluating the Absolute Between-ROC Area (ABROCA).
-    The ABROCA is used as a tool to measure predictive fairness using the predicted
-    probabilities of observations from two or more predictive models.
+    The ABROCA is used as a tool to measure predictive fairness using the 
+    predicted probabilities of observations from two or more predictive 
+    models. For more information, see Gardner, Brooks, and Baker, 
+    "Evaluating the Fairness of Predictive Student Models Through Slicing 
+    Analysis," in Proceedings of the 9th International Conference on Learning 
+    Analytics and Knowledge (LAK19).
 License: MIT
 Encoding: UTF-8
 LazyData: true
