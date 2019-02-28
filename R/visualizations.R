@@ -2,7 +2,7 @@
 #' Create a "slice plot" of two roc curves with area between them (the ABROCA region) shaded.
 #' @param majority_roc list with attributes "x" and "y" defining points of roc curve
 #' @param minority_roc list with attributes "x" and "y" defining points of roc curve
-#' @param majoruty_group_name optional label for majority group (character)
+#' @param majority_group_name optional label for majority group (character)
 #' @param minority_group_name optional label for minority group (character)
 #' @param fout path to output file
 #' @return No return value; file is saved to disk.
