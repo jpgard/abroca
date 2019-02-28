@@ -17,7 +17,7 @@ slice_plot <- function(majority_roc, minority_roc, majority_group_name = NULL, m
               length(majority_roc$x) == length(minority_roc$x),
               length(majority_roc$x) == length(minority_roc$y))
     if (!is.null(fout)){
-        png(fout, width = 720, height = 720)
+        grDevices::png(fout, width = 720, height = 720)
     }
     # set some graph parameters
     majority_color = "red"
@@ -32,7 +32,7 @@ slice_plot <- function(majority_roc, minority_roc, majority_group_name = NULL, m
         minority_group_label = glue::glue("{minority_group_label} ({minority_group_name})")
     }
     # add labels, if given
-    plot(majority_roc$x,
+    graphics::plot(majority_roc$x,
          majority_roc$y,
          col = majority_color,
          type = "l",
@@ -40,16 +40,16 @@ slice_plot <- function(majority_roc, minority_roc, majority_group_name = NULL, m
          main = plot_title,
          xlab = "False Positive Rate",
          ylab = "True Positive Rate")
-    polygon(x = c(majority_roc$x, rev(minority_roc$x)), # reverse ordering used to close polygon by ending near start point
+    graphics::polygon(x = c(majority_roc$x, rev(minority_roc$x)), # reverse ordering used to close polygon by ending near start point
             y = c(majority_roc$y, rev(minority_roc$y)),
             col = "grey",
             border = NA
     )
-    lines(majority_roc$x, majority_roc$y, col = majority_color, type = "l", lwd = 1.5)
+    graphics::lines(majority_roc$x, majority_roc$y, col = majority_color, type = "l", lwd = 1.5)
     #segments(majority_roc$x, majority_roc$y, minority_roc$x, minority_roc$y)
-    lines(minority_roc$x, minority_roc$y, col = minority_color, type = "l", lwd = 1.5)
-    legend("bottomright", legend = c(majority_group_label, minority_group_label), col = c(majority_color, minority_color), lty = 1)
+    graphics::lines(minority_roc$x, minority_roc$y, col = minority_color, type = "l", lwd = 1.5)
+    graphics::legend("bottomright", legend = c(majority_group_label, minority_group_label), col = c(majority_color, minority_color), lty = 1)
     if (!is.null(fout)){
-        dev.off()
+        grDevices::dev.off()
     }
 }
