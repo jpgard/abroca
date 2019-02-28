@@ -16,7 +16,9 @@ slice_plot <- function(majority_roc, minority_roc, majority_group_name = NULL, m
     stopifnot(length(majority_roc$x) == length(majority_roc$y),
               length(majority_roc$x) == length(minority_roc$x),
               length(majority_roc$x) == length(minority_roc$y))
-    pdf(fout, width = 7, height = 7)
+    if (!is.null(fout)){
+        png(fout, width = 720, height = 720)
+    }
     # set some graph parameters
     majority_color = "red"
     minority_color = "blue"
@@ -47,5 +49,7 @@ slice_plot <- function(majority_roc, minority_roc, majority_group_name = NULL, m
     #segments(majority_roc$x, majority_roc$y, minority_roc$x, minority_roc$y)
     lines(minority_roc$x, minority_roc$y, col = minority_color, type = "l", lwd = 1.5)
     legend("bottomright", legend = c(majority_group_label, minority_group_label), col = c(majority_color, minority_color), lty = 1)
-    dev.off()
+    if (!is.null(fout)){
+        dev.off()
+    }
 }

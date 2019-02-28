@@ -40,9 +40,9 @@ compute_abroca <- function(df, pred_col, label_col, protected_attr_col, majority
         f2 <- function(x) abs(f1(x))                 # take the positive value
         slice = integrate(f2, 0, 1, subdivisions = 10000L)$value # increased subdivisions from default 100L because non-convergence was occasionally reached when evaluating some integrals
         ss <- ss + slice
-        # todo: plot these or write to file
+        # plot these or write to file
         if (plot_slices == TRUE) {
-            output_filename = file.path(image_dir, glue::glue('slice_plot_{identifier}_{majority_protected_attr_val}_{protected_attr_val}.pdf'))
+            output_filename = file.path(image_dir, glue::glue('slice_plot_{identifier}_{majority_protected_attr_val}_{protected_attr_val}.png'))
             slice_plot(majority_roc_fun, minority_roc_fun, majority_protected_attr_val, protected_attr_val, fout = output_filename)
         }
     }
