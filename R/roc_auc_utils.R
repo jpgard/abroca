@@ -33,9 +33,9 @@ compute_auc <- function(preds, labs) {
 #' @seealso \code{\link[stats]{approx}}
 #' @export
 interpolate_roc_fun <- function(perf_in, n_grid = 10000) {
-    x_vals = unlist(perf_in@x.values)
-    y_vals = unlist(perf_in@y.values)
+    x_vals <- unlist(perf_in@x.values)
+    y_vals <- unlist(perf_in@y.values)
     stopifnot(length(x_vals) == length(y_vals))
-    roc_approx = stats::approx(x_vals, y_vals, n = n_grid)
+    roc_approx <- stats::approx(x_vals, y_vals, n = n_grid)
     return(roc_approx)
 }

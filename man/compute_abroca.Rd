@@ -9,30 +9,39 @@ compute_abroca(df, pred_col, label_col, protected_attr_col,
   image_dir = NULL, identifier = NULL)
 }
 \arguments{
-\item{df}{dataframe containing colnames matching pred_col, label_col, and protected_attr_col}
+\item{df}{dataframe containing colnames matching pred_col, label_col, and
+protected_attr_col}
 
 \item{pred_col}{name of column containing predicted probabilities (string)}
 
-\item{label_col}{name of column containing true labels (should be 0,1 only)}
+\item{label_col}{name of column containing true labels
+(should be 0,1 only) (string)}
 
-\item{protected_attr_col}{name of column containing protected attribute (string)}
+\item{protected_attr_col}{name of column containing protected
+attribute (string)}
 
-\item{majority_protected_attr_val}{name of "majority" group wrt protected attribute (string)}
+\item{majority_protected_attr_val}{name of 'majority' group wrt protected
+attribute (string)}
 
-\item{n_grid}{number of grid points to use in approximation (numeric) (default of 10000 is more than adequate for most cases)}
+\item{n_grid}{number of grid points to use in approximation (numeric)
+(default of 10000 is more than adequate for most cases)}
 
-\item{plot_slices}{if TRUE, ROC slice plots are generated and saved to img_dir (boolean)}
+\item{plot_slices}{if TRUE, ROC slice plots are generated and saved to
+img_dir (boolean)}
 
 \item{image_dir}{directory to save images to (string)}
 
-\item{identifier}{identifier name, used for filenames if plot_slices is set to TRUE (boolean)}
+\item{identifier}{identifier name, used for filenames if plot_slices is
+set to TRUE (boolean)}
 }
 \value{
-Value of slice statistic, the absolute value of area between ROC curves for protected_attr_col
+Value of slice statistic, the absolute value of area between ROC
+curves for protected_attr_col
 #' @references
-Josh Gardner, Christopher Brooks, and Ryan Baker. (2019). Evaluating the Fairness
-of Predictive Student Models Through Slicing Analysis.
-*Proceedings of the 9th International Conference on Learning Analytics and Knowledge (LAK19)*.
+Josh Gardner, Christopher Brooks, and Ryan Baker. (2019). Evaluating the
+Fairness  of Predictive Student Models Through Slicing Analysis.
+*Proceedings of the 9th International Conference on Learning Analytics
+and Knowledge (LAK19)*.
 }
 \description{
 Compute the value of the abroca statistic.

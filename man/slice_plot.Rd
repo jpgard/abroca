@@ -2,15 +2,15 @@
 % Please edit documentation in R/visualizations.R
 \name{slice_plot}
 \alias{slice_plot}
-\title{Create a "slice plot" of two roc curves with area between them (the ABROCA region) shaded.}
+\title{Create a 'slice plot' of two roc curves with area between them (the ABROCA region) shaded.}
 \usage{
 slice_plot(majority_roc, minority_roc, majority_group_name = NULL,
   minority_group_name = NULL, fout = NULL)
 }
 \arguments{
-\item{majority_roc}{list with attributes "x" and "y" defining points of roc curve}
+\item{majority_roc}{list with attributes 'x' and 'y' defining points of roc curve}
 
-\item{minority_roc}{list with attributes "x" and "y" defining points of roc curve}
+\item{minority_roc}{list with attributes 'x' and 'y' defining points of roc curve}
 
 \item{majority_group_name}{optional label for majority group (character)}
 
@@ -22,7 +22,7 @@ slice_plot(majority_roc, minority_roc, majority_group_name = NULL,
 No return value; file is saved to disk.
 }
 \description{
-Create a "slice plot" of two roc curves with area between them (the ABROCA region) shaded.
+Create a 'slice plot' of two roc curves with area between them (the ABROCA region) shaded.
 }
 \references{
 Josh Gardner, Christopher Brooks, and Ryan Baker. (2019). Evaluating the Fairness
