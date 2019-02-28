@@ -19,5 +19,5 @@ returns a list with components x and y, containing n coordinates which
 Use interpolation to make approximate the Receiver Operating Characteristic (ROC) curve along n_grid equally-spaced values.
 }
 \seealso{
-\code{\link{stats::approx}}
+\code{\link[stats]{approx}}
 }

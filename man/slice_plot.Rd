@@ -12,11 +12,11 @@ slice_plot(majority_roc, minority_roc, majority_group_name = NULL,
 
 \item{minority_roc}{list with attributes "x" and "y" defining points of roc curve}
 
+\item{majority_group_name}{optional label for majority group (character)}
+
 \item{minority_group_name}{optional label for minority group (character)}
 
 \item{fout}{path to output file}
-
-\item{majoruty_group_name}{optional label for majority group (character)}
 }
 \value{
 No return value; file is saved to disk.

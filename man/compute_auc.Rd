@@ -18,5 +18,5 @@ value of Area Under the Receiver Operating Characteristic Curve (AUC) (numeric)
 Compute Area Under the Receiver Operating Characteristic Curve (AUC)
 }
 \seealso{
-\code{\link{ROCR::performance}}
+\code{\link[ROCR]{performance}}
 }

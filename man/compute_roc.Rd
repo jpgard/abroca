@@ -18,5 +18,5 @@ ROCR::performance object
 compute the Receiver Operating Characteristic (ROC) curve for a set of predicted probabilities and the true class labels.
 }
 \seealso{
-\code{\link{ROCR::performance}}
+\code{\link[ROCR]{performance}}
 }
