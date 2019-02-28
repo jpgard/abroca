@@ -5,10 +5,10 @@
 #' @return ROCR::performance object
 #' @seealso \code{\link[ROCR]{performance}}
 #' @export
-compute_roc <- function(preds, labs){
+compute_roc <- function(preds, labs) {
     # create prediction object
     pred <- ROCR::prediction(preds, labs)
-    perf <- ROCR::performance(pred,"tpr","fpr")
+    perf <- ROCR::performance(pred, "tpr", "fpr")
     return(perf)
 }
 
@@ -18,7 +18,7 @@ compute_roc <- function(preds, labs){
 #' @return value of Area Under the Receiver Operating Characteristic Curve (AUC) (numeric)
 #' @seealso \code{\link[ROCR]{performance}}
 #' @export
-compute_auc <- function(preds, labs){
+compute_auc <- function(preds, labs) {
     predobj <- ROCR::prediction(preds, labs)
     aucobj <- ROCR::performance(predobj, measure = "auc")
     auc <- aucobj@y.values[[1]]
@@ -32,7 +32,7 @@ compute_auc <- function(preds, labs){
 #'   interpolate the given data points according to the method (and rule) desired.
 #' @seealso \code{\link[stats]{approx}}
 #' @export
-interpolate_roc_fun <- function(perf_in, n_grid = 10000){
+interpolate_roc_fun <- function(perf_in, n_grid = 10000) {
     x_vals = unlist(perf_in@x.values)
     y_vals = unlist(perf_in@y.values)
     stopifnot(length(x_vals) == length(y_vals))
