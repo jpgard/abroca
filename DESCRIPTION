@@ -14,7 +14,7 @@ Description: This package contains functions for computing, visualizing,
     "Evaluating the Fairness of Predictive Student Models Through Slicing 
     Analysis," in Proceedings of the 9th International Conference on Learning 
     Analytics and Knowledge (LAK19).
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports:
