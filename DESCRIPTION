@@ -32,4 +32,4 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
-Depends: R (>= 3.4.2)
+Depends: R (>= 3.4.0)
