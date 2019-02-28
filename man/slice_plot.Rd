@@ -24,3 +24,8 @@ No return value; file is saved to disk.
 \description{
 Create a "slice plot" of two roc curves with area between them (the ABROCA region) shaded.
 }
+\references{
+Josh Gardner, Christopher Brooks, and Ryan Baker. (2019). Evaluating the Fairness
+of Predictive Student Models Through Slicing Analysis.
+*Proceedings of the 9th International Conference on Learning Analytics and Knowledge (LAK19)*.
+}

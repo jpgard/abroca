@@ -28,7 +28,11 @@ compute_abroca(df, pred_col, label_col, protected_attr_col,
 \item{identifier}{identifier name, used for filenames if plot_slices is set to TRUE (boolean)}
 }
 \value{
-value of slice statistic, the absolute value of area between ROC curves for protected_attr_col
+Value of slice statistic, the absolute value of area between ROC curves for protected_attr_col
+#' @references
+Josh Gardner, Christopher Brooks, and Ryan Baker. (2019). Evaluating the Fairness
+of Predictive Student Models Through Slicing Analysis.
+*Proceedings of the 9th International Conference on Learning Analytics and Knowledge (LAK19)*.
 }
 \description{
 Compute the value of the abroca statistic.
