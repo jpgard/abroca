@@ -26,15 +26,14 @@ We will attempt to predict whether an individual returns (for any reason) or whe
 
 ```{r}
 # install.packages("abroca")
-# library(abroca)
-devtools::load_all()
-data("recidivism") #https://catalog.data.gov/dataset/recidivism-beginning-2008
+library(abroca)
+data("recidivism")
 head(recidivism)
 ```
 
 To view dataset documentation, including column descriptions:
 ```{r, results='hide'}
-# str(recidivism)
+str(recidivism)
 # ?recidivism
 ```
 
