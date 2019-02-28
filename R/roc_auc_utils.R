@@ -16,7 +16,7 @@ compute_roc <- function(preds, labs){
 #' @param preds vector of predicted probabilities (numeric)
 #' @param labs vector of true class labels (numeric)
 #' @return value of Area Under the Receiver Operating Characteristic Curve (AUC) (numeric)
-#' @seealso \code{\link{ROCR::performance}}
+#' @seealso \code{\link[ROCR]{performance}}
 #' @export
 compute_auc <- function(preds, labs){
     predobj <- ROCR::prediction(preds, labs)
