@@ -24,10 +24,10 @@ slice_plot <- function(majority_roc, minority_roc, majority_group_name = NULL, m
     minority_group_label = "Minority Group"
     plot_title = "ROC Slice Plot"
     if (!is.null(majority_group_name)){
-        majority_group_label = glue("{majority_group_label} ({majority_group_name})")
+        majority_group_label = glue::glue("{majority_group_label} ({majority_group_name})")
     }
     if (!is.null(minority_group_name)){
-        minority_group_label = glue("{minority_group_label} ({minority_group_name})")
+        minority_group_label = glue::glue("{minority_group_label} ({minority_group_name})")
     }
     # add labels, if given
     plot(majority_roc$x,

@@ -42,7 +42,7 @@ compute_abroca <- function(df, pred_col, label_col, protected_attr_col, majority
         ss <- ss + slice
         # todo: plot these or write to file
         if (plot_slices == TRUE) {
-            output_filename = file.path(image_dir, glue('slice_plot_{identifier}_{majority_protected_attr_val}_{protected_attr_val}.pdf'))
+            output_filename = file.path(image_dir, glue::glue('slice_plot_{identifier}_{majority_protected_attr_val}_{protected_attr_val}.pdf'))
             slice_plot(majority_roc_fun, minority_roc_fun, majority_protected_attr_val, protected_attr_val, fout = output_filename)
         }
     }
