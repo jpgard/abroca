@@ -9,6 +9,7 @@
 #' @param image_dir directory to save images to (string)
 #' @param identifier identifier name, used for filenames if plot_slices is set to TRUE (boolean)
 #' @return value of slice statistic, the absolute value of area between ROC curves for protected_attr_col
+#' @export
 compute_abroca <- function(df, pred_col, label_col, protected_attr_col, majority_protected_attr_val, n_grid = 10000, plot_slices = TRUE, image_dir = NULL, identifier = NULL){
     # todo: input checking
     # pred_col should be in interval [0,1]
