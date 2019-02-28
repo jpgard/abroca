@@ -6,6 +6,10 @@
 #' @param minority_group_name optional label for minority group (character)
 #' @param fout path to output file
 #' @return No return value; file is saved to disk.
+#' @references
+#' Josh Gardner, Christopher Brooks, and Ryan Baker. (2019). Evaluating the Fairness
+#' of Predictive Student Models Through Slicing Analysis.
+#' *Proceedings of the 9th International Conference on Learning Analytics and Knowledge (LAK19)*.
 #' @export
 slice_plot <- function(majority_roc, minority_roc, majority_group_name = NULL, minority_group_name = NULL, fout = NULL) {
     # check that number of points are the same

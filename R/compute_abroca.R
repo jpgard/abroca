@@ -8,9 +8,14 @@
 #' @param plot_slices if TRUE, ROC slice plots are generated and saved to img_dir (boolean)
 #' @param image_dir directory to save images to (string)
 #' @param identifier identifier name, used for filenames if plot_slices is set to TRUE (boolean)
-#' @return value of slice statistic, the absolute value of area between ROC curves for protected_attr_col
+#' @return Value of slice statistic, the absolute value of area between ROC curves for protected_attr_col
+#' #' @references
+#' Josh Gardner, Christopher Brooks, and Ryan Baker. (2019). Evaluating the Fairness
+#' of Predictive Student Models Through Slicing Analysis.
+#' *Proceedings of the 9th International Conference on Learning Analytics and Knowledge (LAK19)*.
 #' @export
-compute_abroca <- function(df, pred_col, label_col, protected_attr_col, majority_protected_attr_val, n_grid = 10000, plot_slices = TRUE, image_dir = NULL, identifier = NULL){
+compute_abroca <- function(df, pred_col, label_col, protected_attr_col, majority_protected_attr_val,
+                           n_grid = 10000, plot_slices = TRUE, image_dir = NULL, identifier = NULL){
     # todo: input checking
     # pred_col should be in interval [0,1]
     # label_col should be strictly 0 or 1
