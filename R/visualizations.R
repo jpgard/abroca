@@ -14,8 +14,9 @@
 slice_plot <- function(majority_roc, minority_roc, majority_group_name = NULL,
                        minority_group_name = NULL, fout = NULL) {
     # check that number of points are the same
-    stopifnot(length(majority_roc$x) == length(majority_roc$y), length(majority_roc$x) ==
-        length(minority_roc$x), length(majority_roc$x) == length(minority_roc$y))
+    stopifnot(length(majority_roc$x) == length(majority_roc$y),
+              length(majority_roc$x) == length(minority_roc$x),
+              length(majority_roc$x) == length(minority_roc$y))
     if (!is.null(fout)) {
         grDevices::png(fout, width = 720, height = 720)
     }
@@ -26,10 +27,12 @@ slice_plot <- function(majority_roc, minority_roc, majority_group_name = NULL,
     minority_group_label <- "Minority Group"
     plot_title <- "ROC Slice Plot"
     if (!is.null(majority_group_name)) {
-        majority_group_label <- glue::glue("{majority_group_label} ({majority_group_name})")
+        majority_group_label <- glue::glue(
+            "{majority_group_label} ({majority_group_name})")
     }
     if (!is.null(minority_group_name)) {
-        minority_group_label <- glue::glue("{minority_group_label} ({minority_group_name})")
+        minority_group_label <- glue::glue(
+            "{minority_group_label} ({minority_group_name})")
     }
     # add labels, if given
     graphics::plot(majority_roc$x, majority_roc$y, col = majority_color,
