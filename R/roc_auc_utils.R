@@ -3,7 +3,7 @@
 #' @param preds vector of predicted probability of being in the positive class P(X == 1) (numeric)
 #' @param labs vector of true labels (numeric)
 #' @return ROCR::performance object
-#' @seealso \code{\link{ROCR::performance}}
+#' @seealso \code{\link[ROCR]{performance}}
 #' @export
 compute_roc <- function(preds, labs){
     # create prediction object
@@ -30,7 +30,7 @@ compute_auc <- function(preds, labs){
 #' @param n_grid number of approximation points to use (default value of 10000 more than adequate for most applications) (numeric)
 #' @return returns a list with components x and y, containing n coordinates which
 #'   interpolate the given data points according to the method (and rule) desired.
-#' @seealso \code{\link{stats::approx}}
+#' @seealso \code{\link[stats]{approx}}
 #' @export
 interpolate_roc_fun <- function(perf_in, n_grid = 10000){
     x_vals = unlist(perf_in@x.values)
