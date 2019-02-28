@@ -20,8 +20,8 @@ protected_attr_col}
 \item{protected_attr_col}{name of column containing protected
 attribute (string)}
 
-\item{majority_protected_attr_val}{name of 'majority' group wrt protected
-attribute (string)}
+\item{majority_protected_attr_val}{name of 'majority' group with
+respect to protected attribute (string)}
 
 \item{n_grid}{number of grid points to use in approximation (numeric)
 (default of 10000 is more than adequate for most cases)}
