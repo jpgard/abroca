@@ -1,14 +1,15 @@
-## df: dataframe containing colnames matching pred_col, label_col, and protected_attr_col
-## pred_col: name of column containing predicted probabilities
-## label_col: name of column containing true labels (should be 0,1 only)
-## protected_attr_col: name of column containing protected attr
-## majority_protected_attr_val: name of "majority" group wrt protected attribute
-## n_grid: number of grid points to use in approximation
-## plot_slices: if true, ROC slice plots are generated and saved
-## img_dir: directory to save images to
-## course: course name, used for filenames if plot_slices is set to TRUE
-## returns: value of slice statistic, absolute value of area between ROC curves for protected_attr_col
-compute_slice_statistic <- function(df, pred_col, label_col, protected_attr_col, majority_protected_attr_val, n_grid = 10000, plot_slices = TRUE, image_dir = NULL, course = NULL){
+#' Compute the value of the abroca statistic.
+#' @param df dataframe containing colnames matching pred_col, label_col, and protected_attr_col
+#' @param pred_col name of column containing predicted probabilities (string)
+#' @param label_col name of column containing true labels (should be 0,1 only)
+#' @param protected_attr_col name of column containing protected attribute (string)
+#' @param majority_protected_attr_val name of "majority" group wrt protected attribute (string)
+#' @param n_grid number of grid points to use in approximation (numeric) (default of 10000 is more than adequate for most cases)
+#' @param plot_slices if TRUE, ROC slice plots are generated and saved to img_dir (boolean)
+#' @param image_dir directory to save images to (string)
+#' @param identifier identifier name, used for filenames if plot_slices is set to TRUE (boolean)
+#' @return value of slice statistic, the absolute value of area between ROC curves for protected_attr_col
+compute_abroca <- function(df, pred_col, label_col, protected_attr_col, majority_protected_attr_val, n_grid = 10000, plot_slices = TRUE, image_dir = NULL, identifier = NULL){
     # todo: input checking
     # pred_col should be in interval [0,1]
     # label_col should be strictly 0 or 1
@@ -35,7 +36,7 @@ compute_slice_statistic <- function(df, pred_col, label_col, protected_attr_col,
         ss <- ss + slice
         # todo: plot these or write to file
         if (plot_slices == TRUE) {
-            output_filename = file.path(image_dir, glue('slice_plot_{course}_{majority_protected_attr_val}_{protected_attr_val}.pdf'))
+            output_filename = file.path(image_dir, glue('slice_plot_{identifier}_{majority_protected_attr_val}_{protected_attr_val}.pdf'))
             slice_plot(majority_roc_fun, minority_roc_fun, majority_protected_attr_val, protected_attr_val, fout = output_filename)
         }
     }
