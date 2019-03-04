@@ -73,9 +73,9 @@ roc_plot <- function(preds, labs, plot_type = NULL, show_diag = FALSE,
         grDevices::png(fout, width = 720, height = 720)
     }
     if (plot_type == "majority"){
-        plot_color <- "blue"
-    } else if (plot_type == "minority"){
         plot_color <- "red"
+    } else if (plot_type == "minority"){
+        plot_color <- "blue"
     } else{
         plot_color <- "black"
     }
