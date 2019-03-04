@@ -28,13 +28,14 @@ compute_abroca <- function(df, pred_col, label_col, protected_attr_col,
                            plot_slices = TRUE, image_dir = NULL,
                            identifier = NULL) {
     # input checking pred_col should be in interval [0,1]
-    if !all(df[,pred_col] <= 1 & df[,pred_col] >= 0) stop(
+    if (!all(df[, pred_col] <= 1 & df[, pred_col] >= 0)) stop(
         "predictions must be in range[0, 1]")
-    if !length(unique(df[,label_col]) == 2) stop(
+    if (!length(unique(df[, label_col]) == 2)) stop(
         "only binary classification tasks supported")
-    if !is.factor(df[,protected_attr_col]){
-        message(glue::glue("[WARNING] coercing column {protected_attr_col} to factor"))
-        df[,protected_attr_col] <- as.factor(df[,protected_attr_col])
+    if (!is.factor(df[, protected_attr_col])){
+        message(glue::glue(
+            "[WARNING] coercing column {protected_attr_col} to factor"))
+        df[, protected_attr_col] <- as.factor(df[, protected_attr_col])
     }
     # initialize data structures
     ss <- 0
@@ -51,7 +52,9 @@ compute_abroca <- function(df, pred_col, label_col, protected_attr_col,
     }
     # compare each non-majority class to majority class; accumulate absolute
     # difference between ROC curves to slicing statistic
-    majority_roc_fun <- interpolate_roc_fun(roc_list[[majority_protected_attr_val]])
+    majority_roc_fun <- interpolate_roc_fun(
+        roc_list[[majority_protected_attr_val]]
+        )
     for (p_a_value in p_a_values[p_a_values != majority_protected_attr_val]) {
         minority_roc_fun <- interpolate_roc_fun(roc_list[[p_a_value]])
         # use function approximation to compute slice statistic
@@ -66,10 +69,14 @@ compute_abroca <- function(df, pred_col, label_col, protected_attr_col,
         if (plot_slices == TRUE) {
             output_filename <- file.path(
                 image_dir,
-                glue::glue(
-                    "slice_plot_{identifier}_{majority_protected_attr_val}_{p_a_value}.png"))
-            slice_plot(majority_roc_fun, minority_roc_fun, majority_protected_attr_val,
-                p_a_value, fout = output_filename)
+                paste0(glue::glue("slice_plot_{identifier}_"),
+                       glue::glue("{majority_protected_attr_val}"),
+                       glue::glue("_{p_a_value}.png")
+                       )
+                )
+            slice_plot(majority_roc_fun, minority_roc_fun,
+                       majority_protected_attr_val,
+                       p_a_value, fout = output_filename)
         }
     }
     return(ss)
