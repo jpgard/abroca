@@ -27,9 +27,15 @@ compute_abroca <- function(df, pred_col, label_col, protected_attr_col,
                            majority_protected_attr_val, n_grid = 10000,
                            plot_slices = TRUE, image_dir = NULL,
                            identifier = NULL) {
-    # todo: input checking pred_col should be in interval [0,1] label_col should be
-    # strictly 0 or 1 majority_protected_attr_col should be in protected_attr_col
-    # values protected_attr_col must be factor, otherwise convert and warn
+    # input checking pred_col should be in interval [0,1]
+    if !all(df[,pred_col] <= 1 & df[,pred_col] >= 0) stop(
+        "predictions must be in range[0, 1]")
+    if !length(unique(df[,label_col]) == 2) stop(
+        "only binary classification tasks supported")
+    if !is.factor(df[,protected_attr_col]){
+        message(glue::glue("[WARNING] coercing column {protected_attr_col} to factor"))
+        df[,protected_attr_col] <- as.factor(df[,protected_attr_col])
+    }
     # initialize data structures
     ss <- 0
     p_a_values <- unique(df[, protected_attr_col])
