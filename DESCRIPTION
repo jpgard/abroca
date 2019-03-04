@@ -6,7 +6,7 @@ Authors@R:
            family = "Gardner",
            role = c("aut", "cre"),
            email = "jpgard@cs.washington.edu")
-Description: This package contains functions for computing, visualizing,
+Description: Functions for computing, visualizing,
     and statistically evaluating the Absolute Between-ROC Area (ABROCA).
     The ABROCA is used as a tool to measure predictive fairness using the 
     predicted probabilities of observations from two or more predictive 

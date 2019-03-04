@@ -1,9 +1,11 @@
+README
+================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # abroca
 
-The goal of abroca is to provide basic functionality for computing and
+The goal of `abroca` is to provide basic functionality for computing and
 visualizing the Absolute Between-ROC Area (ABROCA). In future version of
 the package, we intend to make further statistical testing procedures
 for ABROCA available.
@@ -15,6 +17,14 @@ You can install the released version of abroca from
 
 ``` r
 install.packages("abroca")
+```
+
+If you would like to install the latest development version directly
+from GitHub, you can do so:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("jpgard/abroca")
 ```
 
 ## Example
@@ -37,11 +47,11 @@ abroca <- compute_abroca(testdata, pred_col = "pred", label_col = "returned",
                protected_attr_col = "Gender", majority_protected_attr_val = "MALE", 
                plot_slices = TRUE, image_dir=".", identifier="recidivism")
 print(abroca)
-#> [1] 0.03061951
-knitr::include_graphics("vignettes/slice_plot_recidivism_MALE_FEMALE.png")
+#> [1] 0.02787494
+knitr::include_graphics("slice_plot_recidivism_MALE_FEMALE.png")
 ```
 
-<img src="vignettes/slice_plot_recidivism_MALE_FEMALE.png" width="100%" />
+<img src="slice_plot_recidivism_MALE_FEMALE.png" width="100%" />
 
 The plot is automatically saved to a file instead of being displayed
 on-screen.
@@ -53,6 +63,12 @@ Fairness of Predictive Student Models Through Slicing Analysis.
 Proceedings of the 9th International Conference on Learning Analytics
 and Knowledge (LAK19); March 4-8, 2019; Tempe, AZ, USA.
 <https://doi.org/10.1145/3303772.3303791>
+
+## Getting help
+
+If you encounter a clear bug, please file a minimal reproducible example
+on [github](https://github.com/jpgard/abroca/issues), or contact the
+package maintainers directly (see the package documentation).
 
 [![Travis build
 status](https://travis-ci.org/jpgard/abroca.svg?branch=master)](https://travis-ci.org/jpgard/abroca)
