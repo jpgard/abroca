@@ -45,13 +45,13 @@ lr = glm(returned ~ ., data=traindata, family="binomial")
 testdata$pred = predict(lr, testdata, type = "response")
 abroca <- compute_abroca(testdata, pred_col = "pred", label_col = "returned", 
                protected_attr_col = "Gender", majority_protected_attr_val = "MALE", 
-               plot_slices = TRUE, image_dir=".", identifier="recidivism")
+               plot_slices = TRUE, image_dir="./man/figures", identifier="recidivism")
 print(abroca)
-#> [1] 0.02787494
-knitr::include_graphics("slice_plot_recidivism_MALE_FEMALE.png")
+#> [1] 0.03281967
+knitr::include_graphics("man/figures/slice_plot_recidivism_MALE_FEMALE.png")
 ```
 
-<img src="slice_plot_recidivism_MALE_FEMALE.png" width="100%" />
+<img src="man/figures/slice_plot_recidivism_MALE_FEMALE.png" width="100%" />
 
 The plot is automatically saved to a file instead of being displayed
 on-screen.
