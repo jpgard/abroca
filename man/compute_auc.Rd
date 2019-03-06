@@ -17,6 +17,22 @@ value of Area Under the Receiver Operating Characteristic Curve (AUC) (numeric)
 \description{
 Compute Area Under the Receiver Operating Characteristic Curve (AUC)
 }
+\examples{
+# First, we load data, train a model, and generate predictions to evaluate.
+data("recidivism")
+recidivism$returned = as.factor(recidivism$Return.Status != "Not Returned")
+in_train = caret::createDataPartition(recidivism$returned, 
+    p = 0.75, list = FALSE)
+traindata = recidivism[in_train,c("Release.Year", "County.of.Indictment", 
+    "Gender", "Age.at.Release", "returned")]
+testdata = recidivism[-in_train,c("Release.Year", "County.of.Indictment", 
+    "Gender", "Age.at.Release", "returned")]
+lr = glm(returned ~ ., data=traindata, family="binomial")
+testdata$pred = predict(lr, testdata, type = "response")
+
+# Now, we apply compute_auc() to the labels and predictions:
+compute_auc(testdata$pred, testdata$returned)
+}
 \seealso{
 \code{\link[ROCR]{performance}}
 }

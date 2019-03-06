@@ -46,3 +46,24 @@ and Knowledge (LAK19)*.
 \description{
 Compute the value of the abroca statistic.
 }
+\examples{
+# The compute_abroca function uses a dataframe of predictions to generate
+# the abroca statistic. This is the main utility of the abroca package.
+
+# First, we load data, train a model, and generate predictions to evaluate.
+data("recidivism")
+recidivism$returned = as.factor(recidivism$Return.Status != "Not Returned")
+in_train = caret::createDataPartition(recidivism$returned, 
+    p = 0.75, list = FALSE)
+traindata = recidivism[in_train,c("Release.Year", "County.of.Indictment", 
+    "Gender", "Age.at.Release", "returned")]
+testdata = recidivism[-in_train,c("Release.Year", "County.of.Indictment", 
+    "Gender", "Age.at.Release", "returned")]
+lr = glm(returned ~ ., data=traindata, family="binomial")
+testdata$pred = predict(lr, testdata, type = "response")
+
+# The predictions are used as the primary input to compute_abroca():
+abroca <- compute_abroca(testdata, pred_col = "pred", label_col = "returned", 
+    protected_attr_col = "Gender", majority_protected_attr_val = "MALE", 
+    plot_slices = FALSE, identifier="recidivism") 
+}

@@ -1,6 +1,6 @@
 Package: abroca
 Title: Compute and Evaluate Absolute Between-ROC Area
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     person(given = "Josh",
            family = "Gardner",

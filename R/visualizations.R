@@ -6,12 +6,16 @@
 #' @param minority_group_name optional label for minority group (character)
 #' @param fout path to output file
 #' @return No return value; file is saved to disk.
+#' @seealso \code{\link{compute_abroca}}
 #' @references
 #' Josh Gardner, Christopher Brooks, and Ryan Baker. (2019). Evaluating
 #' the Fairness of Predictive Student Models Through Slicing Analysis.
 #' Proceedings of the 9th International Conference on Learning
 #' Analytics and Knowledge (LAK19).
 #' @export
+#' @examples  
+#' # This function is not currently intended for calling directly, but
+#' # this is possible. For example usage, see \code{\link{compute_abroca}}.
 slice_plot <- function(majority_roc, minority_roc, majority_group_name = NULL,
                        minority_group_name = NULL, fout = NULL) {
     # check that number of points are the same
@@ -67,6 +71,23 @@ slice_plot <- function(majority_roc, minority_roc, majority_group_name = NULL,
 #' @param fout path to an output file (png)
 #' @return No return value; file is saved to disk.
 #' @export
+#' @examples  
+#' # First, we load data, train a model, and generate predictions to evaluate.
+#' data("recidivism")
+#' recidivism$returned = as.factor(recidivism$Return.Status != "Not Returned")
+#' in_train = caret::createDataPartition(recidivism$returned, 
+#'     p = 0.75, list = FALSE)
+#' traindata = recidivism[in_train,c("Release.Year", "County.of.Indictment", 
+#'     "Gender", "Age.at.Release", "returned")]
+#' testdata = recidivism[-in_train,c("Release.Year", "County.of.Indictment", 
+#'     "Gender", "Age.at.Release", "returned")]
+#' lr = glm(returned ~ ., data=traindata, family="binomial")
+#' testdata$pred = predict(lr, testdata, type = "response")
+#' 
+#' # Now, we apply roc_plot() to the labels and predictions 
+#' # (note that this writes a file to fout):
+#' roc_plot(testdata$pred, testdata$returned, plot_type = "majority", 
+#'     show_diag=TRUE, fout="roc.png")
 roc_plot <- function(preds, labs, plot_type = NULL, show_diag = FALSE,
                      fout = NULL){
     if (!is.null(fout)) {

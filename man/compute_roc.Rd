@@ -17,6 +17,22 @@ ROCR::performance object
 \description{
 compute the Receiver Operating Characteristic (ROC) curve for a set of predicted probabilities and the true class labels.
 }
+\examples{
+# First, we load data, train a model, and generate predictions to evaluate.
+data("recidivism")
+recidivism$returned = as.factor(recidivism$Return.Status != "Not Returned")
+in_train = caret::createDataPartition(recidivism$returned, 
+    p = 0.75, list = FALSE)
+traindata = recidivism[in_train,c("Release.Year", "County.of.Indictment", 
+    "Gender", "Age.at.Release", "returned")]
+testdata = recidivism[-in_train,c("Release.Year", "County.of.Indictment", 
+    "Gender", "Age.at.Release", "returned")]
+lr = glm(returned ~ ., data=traindata, family="binomial")
+testdata$pred = predict(lr, testdata, type = "response")
+
+# Now, we apply compute_roc() to the labels and predictions:
+compute_roc(testdata$pred, testdata$returned)
+}
 \seealso{
 \code{\link[ROCR]{performance}}
 }
